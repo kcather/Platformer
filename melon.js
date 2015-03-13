@@ -73,6 +73,13 @@ null},updateColRect:function(a,b,c,h){this.collisionBox.adjustSize(a,b,c,h)},che
 a;this.maxVel.y=b},setFriction:function(a,b){this.friction.x=a||0;this.friction.y=b||0},doWalk:function(a){this.flipX(a);this.vel.x+=a?-this.accel.x*me.timer.tick:this.accel.x*me.timer.tick},doClimb:function(a){return this.onladder?(this.vel.y=a?-this.accel.x*me.timer.tick:this.accel.x*me.timer.tick,!0):!1},
 	
 doJump:function(){return!this.jumping&&!this.falling?(this.vel.y=-this.maxVel.y*me.timer.tick,this.jumping=!1):!2},
+doDoubleJump:function(){
+	return!this.jumping&&!this.falling?(this.vel.y=-this.maxVel.y*me.timer.tick,this.jumping=!1):!2
+    if (me.input.isKeyPressed('up')){
+    	return!this.jumping&&!this.falling?(this.vel.y=-this.maxVel.y*me.timer.tick,this.jumping=!1):!2
+    }
+},	
+
 forceJump:function(){this.jumping=this.falling=!1;this.doJump()},
 distanceTo:function(a){var b=
 this.pos.x+this.hWidth-(a.pos.x+a.hWidth),a=this.pos.y+this.hHeight-(a.pos.y+a.hHeight);return Math.sqrt(b*b+a*a)},checkSlope:function(a,b){this.pos.y=a.pos.y-this.height;this.slopeY=b?a.height-(this.collisionBox.right+this.vel.x-a.pos.x):this.collisionBox.left+this.vel.x-a.pos.x;this.vel.y=0;this.pos.y+=this.slopeY.clamp(0,a.height)},computeVelocity:function(a){if(this.gravity)a.y+=!this.onladder?this.gravity*me.timer.tick:0,this.jumping=(this.falling=0<a.y)?!1:this.jumping;if(this.friction.x)a.x=

@@ -6,7 +6,7 @@ var PlayScreen = me.ScreenObject.extend({
 		me.levelDirector.loadLevel("level1");
 		me.input.bindKey(me.input.KEY.LEFT, "left");
 		me.input.bindKey(me.input.KEY.RIGHT, "right");
-		document.getElementById('game_state').innerHTML = "Collect the two the coins to win!";
+		document.getElementById('game_state').innerHTML = "Collect the four coins to win!";
 		document.getElementById('instructions').innerHTML = "Right and Left arrows to move and Up arrow to jump";
 	}
 });

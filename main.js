@@ -8,7 +8,7 @@ var jsApp = {
 	me.loader.preload(resources);
 	me.state.change(me.state.LOADING);
 	me.gamestat.add("coins", 0);
-	me.gamestat.add("totalCoins", 2);
+	me.gamestat.add("totalCoins", 4);
   },
   loaded: function() {
 	me.entityPool.add("player", PlayerEntity);

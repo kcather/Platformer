@@ -8,19 +8,14 @@ var PlayerEntity = me.ObjectEntity.extend({
 		if (me.input.isKeyPressed('left')) { this.doWalk(true);}
 		else if (me.input.isKeyPressed('right')) { this.doWalk(false);}
 		else { this.vel.x = 0; }
+		
 		if (me.input.isKeyPressed('jump')) { 
-			this.doJump();
-			this.jumping = true; //flag for double jump
+			return!this.jumping&&!this.falling?(this.vel.y=-this.maxVel.y*me.timer.tick,this.jumping=!1):!2
+			   if (doublejump == true && me.input.isKeyPressed('up')){ 
+			    return!this.jumping&&!this.falling?(this.vel.y=-this.maxVel.y*me.timer.tick,this.jumping=!1):!2
+			    }
 		}
-		/*
-		
-		My attempt at double jump
-		
-		if (this.jumping)
-		{
-			if (me.input.isKeyPressed('jump')) { 
-				this.doJump(); }	
-		} */
+	
 		me.game.collide(this);
 		this.updateMovement();
 		if (this.bottom > 490) { this.gameOver();}
@@ -102,6 +97,6 @@ var BootsEntity = me.CollectableEntity.extend({
 	onCollision: function (res, obj) {
 		this.collidable = false;
 		me.game.remove(this);
-		obj.gravity = obj.gravity/2;
+		// obj.gravity = obj.gravity/2;
 	}
 });
